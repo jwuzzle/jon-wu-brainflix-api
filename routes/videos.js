@@ -14,19 +14,19 @@ const readVideos = () => {
 //GET all videos 
 router.get('/', (req, res) => {
     const videos = readVideos()
-    res.status(200).json(videos); 
+    res.status(200).json(videos);
 })
 
 //GET single video
 router.get('/:id', (req, res) => {
     const videos = readVideos()
     const { id } = req.params
-    
+
     const individualVideo = videos.find((video) => video.id === id)
 
     if (individualVideo) {
         res.status(200).json(individualVideo);
-    }else{
+    } else {
         res.status(404).send('Video not found.');
     }
 });

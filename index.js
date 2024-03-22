@@ -3,7 +3,9 @@ const app = express();
 const videosRoutes = require('./routes/videos');
 const cors = require("cors");
 const path = require("path");
+require("dotenv").config();
 
+const PORT = process.env.PORT || 8080;
 
 const pathandtimeMiddleware = (req, res, next) => {
     console.log(`Requested URL: ${req.url}`);
@@ -20,6 +22,6 @@ app.use("/images", express.static(path.join(__dirname, "/public/images")));
 
 app.use('/videos', videosRoutes);
 
-app.listen(8000, () => 
-    console.log('Server listening on port 8000')
+app.listen(PORT, () =>
+    console.log(`Server listening on port ${PORT}`)
 );
